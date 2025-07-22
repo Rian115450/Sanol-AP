@@ -2,7 +2,7 @@
 
 A creative universe app by Rian Jakhar.
 
-## Features
+## Features are
 
 - 🔐 Google Login (AuthSession)
 - 💰 Coin + discount system (AsyncStorage)

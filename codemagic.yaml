@@ -1,7 +1,7 @@
 workflows:
   build-android:
     name: Build APK
-    instance_type: mac_mini     # ✅ Free-tier instance type
+    instance_type: linux_x2  # ✅ Use free-tier Linux instance
     max_build_duration: 60
     environment:
       vars:

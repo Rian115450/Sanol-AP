@@ -1,19 +1,23 @@
 workflows:
   build-android:
-    name: Build Android APK
-    instance_type: mac_mini
+    name: Build APK
+    instance_type: mac_mini     # ✅ Free-tier instance type
+    max_build_duration: 60
     environment:
       vars:
-        PACKAGE_NAME: "com.sanol.ap" # Customize if needed
-      node: 18.18.2
-      java: 17
+        PACKAGE_NAME: "com.sanol.app"
+      node: 18
     scripts:
       - name: Install dependencies
+        script: npm install
+      - name: EAS Login (optional if not logged in)
         script: |
-          npm install
-      - name: Build Android APK
-        script: |
-          cd android
-          ./gradlew assembleRelease
+          if [ -z "$EXPO_TOKEN" ]; then
+            echo "EXPO_TOKEN is not set. Skipping login."
+          else
+            npx expo login --token $EXPO_TOKEN
+          fi
+      - name: Build APK with EAS
+        script: npx eas build --platform android --profile production --non-interactive
     artifacts:
-      - android/app/build/outputs/**/*.apk
+      - build/**/outputs/**/*.apk

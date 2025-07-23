@@ -1,0 +1,19 @@
+workflows:
+  build-android:
+    name: Build Android APK
+    instance_type: mac_mini
+    environment:
+      vars:
+        PACKAGE_NAME: "com.sanol.ap" # Customize if needed
+      node: 18.18.2
+      java: 17
+    scripts:
+      - name: Install dependencies
+        script: |
+          npm install
+      - name: Build Android APK
+        script: |
+          cd android
+          ./gradlew assembleRelease
+    artifacts:
+      - android/app/build/outputs/**/*.apk

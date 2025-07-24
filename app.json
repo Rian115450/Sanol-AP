@@ -1,0 +1,18 @@
+{
+  "expo": {
+    "name": "Sanol App",
+    "slug": "sanol-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "platforms": ["android"],
+    "sdkVersion": "50.0.0",
+    "android": {
+      "package": "com.rianjakhar.sanol"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "10a30060-2137-42f8-9a5c-4e1beedacc86"
+      }
+    }
+  }
+}
